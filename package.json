@@ -1,0 +1,29 @@
+{
+  "name": "online_quiz",
+  "version": "1.0.0",
+  "description": "Online quiz : take quiz and get score instantly on different topics",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AditiKulkarni1697/Online_Quiz.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AditiKulkarni1697/Online_Quiz/issues"
+  },
+  "homepage": "https://github.com/AditiKulkarni1697/Online_Quiz#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.20.0",
+    "mongoose": "^8.18.3"
+  }
+}
