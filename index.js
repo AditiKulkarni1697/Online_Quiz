@@ -4,6 +4,8 @@ const cookieParser = require("cookie-parser");
 const { userRouter } = require("./routes/user.routes");
 const { connection } = require("./db/connection");
 const { quizRouter } = require("./routes/quiz.routes");
+const { questionRouter } = require("./routes/question.routes");
+const { submitRouter } = require("./routes/submit.routes");
 
 
 const app = express();
@@ -12,7 +14,9 @@ app.use(express.json())
 app.use(cookieParser());
 
 app.use("/user", userRouter);
-app.use("/quiz", quizRouter)
+app.use("/quiz", quizRouter);
+app.use("/question", questionRouter);
+app.use("/submit", submitRouter);
 
 
 try {

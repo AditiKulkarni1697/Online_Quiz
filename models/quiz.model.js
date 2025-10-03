@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const quizSchema = mongoose.Schema({
     title: {type:String, required: [true, "Title is required"]},
-    author:  {type:mongoose.Schema.Types.ObjectId, ref:'User', required:true},
+    author:  {type:mongoose.Schema.Types.ObjectId, ref:'User', required:[true, "Author is required"]},
     no_of_questions: {type:Number, default: 0}
 });
 
