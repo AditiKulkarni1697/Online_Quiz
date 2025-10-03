@@ -4,21 +4,21 @@ const authentication = async(req,res,next) => {
     const {token} = req.cookies;
 
     try{
-    if(!token){
-        return res.status(400).send({msg:"Please login"})
-    }
+        if(!token){
+            return res.status(400).send({msg:"Please login"})
+        }
 
     const user = jwt.verify(token,process.env.SECRET)
 
-    if(!user){
-        return res.status(400).send({msg:"Please login"})
-    }
+        if(!user){
+            return res.status(400).send({msg:"Please login"})
+        }
 
     const isPresent = await UserModel.findOne({email:user.email})
 
-    if(!isPresent){
-        return res.status(400).send({msg:"Wrong Credentials"})
-    }
+        if(!isPresent){
+            return res.status(400).send({msg:"Wrong Credentials"})
+        }
 
     next()
 }catch(err){

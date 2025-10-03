@@ -60,19 +60,19 @@ const updateRole = async(req,res) => {
   const {user, role} = req.body;
 
   try{
-  const isPresent = await UserModel.findOne({email: user})
+    const isPresent = await UserModel.findOne({email: user})
 
-  if(!isPresent){
-    return res.status(400).send({msg:"Please register the user first"})
+    if(!isPresent){
+      return res.status(400).send({msg:"Please register the user first"})
+    }
+
+    isPresent.role = role
+    await isPresent.save()
+
+    return res.status(200).send({msg:"User role updated successfully"})
+  }catch(err){
+    return res.status(500).send({msg:"Internal Server Error"})
   }
-
-  isPresent.role = role
-  await isPresent.save()
-
-  res.status(200).send({msg:"User role updated successfully"})
-}catch(err){
-  return res.status(500).send({msg:"Internal Server Error"})
-}
 
 }
 
