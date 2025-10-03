@@ -3,17 +3,11 @@ const { UserModel } = require("../models/user.model");
 
 const createQuiz = async(req,res)=>{
 
-    const {title, data} = req.body;
+    const {title, admin} = req.body;
 
     try{
 
-    const isAuthorPresent = await UserModel.findOne({email:data.email});
-
-    if(!isAuthorPresent || isAuthorPresent.role !== "admin"){
-        return res.status(400).send({msg:"Unathorized"})
-    }
-    
-    const quiz = new QuizModel({title, author:isAuthorPresent._id})
+    const quiz = new QuizModel({title, author:admin._id})
 
     await quiz.save()
 

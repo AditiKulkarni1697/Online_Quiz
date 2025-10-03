@@ -6,13 +6,6 @@ const quizValidation = (req,res,next) => {
      if(!title){
         return res.status(400).send({msg:"Missing required fields"});
     }
-    
-    const {token} = req.cookies;
-
-
-    const data = jwt.verify(token, process.env.SECRET)
-
-    req.body.data = data
 
     next()
 }
