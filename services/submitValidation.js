@@ -10,7 +10,7 @@ const submitValidation = async(req, res,next)=>{
 
     const quiz = await QuizModel.findById(quizId)
 
-    if(!Array.isArray(ansArr) || quiz.no_of_questions !== ansArr.length){
+    if(!Array.isArray(ansArr) || quiz.no_of_questions !== ansArr.length || ansArr.length === 0){
         return res.status(400).send({msg:"Incorrect Input, please try again"})
     }
 
