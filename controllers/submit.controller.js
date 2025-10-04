@@ -13,8 +13,6 @@ const submitQuiz = async(req,res) => {
 
     let score = calculateScore(ansArr, correctOptions)
     
-    console.log("correctOptions ansArr", correctOptions,ansArr)
-
     return res.status(200).send({msg:"Quiz submitted successfully", result:{score, total:correctOptions.length}})
     }catch(err){
         res.status(500).send({msg:"Internal Server Error"})
