@@ -1,5 +1,4 @@
 const { QuizModel } = require("../models/quiz.model");
-const { UserModel } = require("../models/user.model");
 
 const createQuiz = async(req,res)=>{
 

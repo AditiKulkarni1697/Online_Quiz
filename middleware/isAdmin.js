@@ -1,19 +1,15 @@
 const jwt = require("jsonwebtoken");
-const { UserModel } = require("../models/user.model");
 
 const isAdmin = async(req,res, next) =>{
-    const {token} = req.cookies;
+    const {isPresent} = req;
 
     try{
-    const data = jwt.verify(token, process.env.SECRET)
 
-    const admin = await UserModel.findOne({email: data.email})
-
-    if(!admin || admin.role !== "admin"){
+    if(!isPresent || isPresent.role !== "admin"){
         return res.status(401).send({msg:"Unauthorized"})
     }
 
-    req.body.admin = admin
+    req.body.admin = isPresent
 
     next()
     }catch(err){

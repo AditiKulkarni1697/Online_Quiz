@@ -16,14 +16,22 @@ const questionValidation = async(req,res,next) => {
     if(!quiz){
         return res.status(400).send({msg:"Please create quiz first"})
     }
-
-    req.body.quiz = quiz
-
+    
     if(admin._id.toString() !== quiz.author.toString() ) {
         return res.status(401).send({msg:"Unauthorized"})
     }
+    req.body.quiz = quiz
+
 
     next()
 }
 
-module.exports = {questionValidation}
+const checkQuizId = (req,res,next) => {
+    const {quizId} = req.params;
+     if(!quizId){
+            return res.status(400).send({msg:"please provide quizId"})
+        }
+    next()
+}
+
+module.exports = {questionValidation, checkQuizId}

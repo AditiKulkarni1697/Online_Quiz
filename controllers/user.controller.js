@@ -1,11 +1,13 @@
 const { UserModel } = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { getUser } = require("../services/user.services");
 
 const userRegister = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const alreadyPresent = await UserModel.findOne({ email });
+    
+    const alreadyPresent = await getUser(email)
 
     if (alreadyPresent) {
       return res.status(400).send({ msg: "User already present" });
@@ -17,7 +19,7 @@ const userRegister = async (req, res) => {
 
     await user.save();
 
-    return res.status(201).send({ msg: "User registered succeessfully" });
+    return res.status(201).send({ msg: "User registered successfully" });
   } catch (err) {
     return res.status(500).send({ msg: "Internal Server Error" });
   }
@@ -26,7 +28,7 @@ const userRegister = async (req, res) => {
 const userLogin = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const isPresent = await UserModel.findOne({ email });
+    const isPresent = await getUser(email)
 
     if (!isPresent) {
       return res.status(400).send({ msg: "Please register" });
@@ -38,7 +40,7 @@ const userLogin = async (req, res) => {
       return res.status(400).send({ msg: "Wrong credentials" });
     }
 
-    const token = await jwt.sign({ email }, process.env.SECRET, {expiresIn:"2h"});
+    const token =  jwt.sign({ email }, process.env.SECRET, {expiresIn:"2h"});
 
     res.cookie("token", token, {
       httpOnly: true,
@@ -60,7 +62,8 @@ const updateRole = async(req,res) => {
   const {user, role} = req.body;
 
   try{
-    const isPresent = await UserModel.findOne({email: user})
+    
+    const isPresent = await getUser(user)
 
     if(!isPresent){
       return res.status(400).send({msg:"Please register the user first"})
