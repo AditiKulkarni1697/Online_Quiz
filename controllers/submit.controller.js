@@ -1,4 +1,5 @@
 const { QuestionModel } = require("../models/question.model");
+const { calculateScore } = require("../services/calculateScore");
 
 const submitQuiz = async(req,res) => {
     const {quizId, ansArr} = req.body;
@@ -10,14 +11,11 @@ const submitQuiz = async(req,res) => {
         return res.status(400).send({msg:"Incorrect input, please try again"})
     }
 
-    let response = correctOptions.length
-   for(let i=0;i<correctOptions.length;i++){
-    if(correctOptions[i].correctOption != ansArr[i]){
-        --response
-    }
-   }
+    let score = calculateScore(ansArr, correctOptions)
+    
+    console.log("correctOptions ansArr", correctOptions,ansArr)
 
-   return res.status(200).send({msg:"Quiz submitted successfully", result:`${response}/${correctOptions.length}`})
+    return res.status(200).send({msg:"Quiz submitted successfully", result:{score, total:correctOptions.length}})
     }catch(err){
         res.status(500).send({msg:"Internal Server Error"})
     }
