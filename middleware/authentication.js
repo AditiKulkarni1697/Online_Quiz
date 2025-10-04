@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { UserModel } = require("../models/user.model");
+const { getUser } = require("../services/user.services");
 const authentication = async(req,res,next) => {
     const {token} = req.cookies;
 
@@ -14,11 +15,13 @@ const authentication = async(req,res,next) => {
             return res.status(400).send({msg:"Please login"})
         }
 
-    const isPresent = await UserModel.findOne({email:user.email})
+    const isPresent = await getUser(user.email)
 
         if(!isPresent){
             return res.status(400).send({msg:"Wrong Credentials"})
         }
+
+        req.isPresent = isPresent
 
     next()
 }catch(err){

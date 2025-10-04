@@ -30,7 +30,6 @@ const getQuestions =  async(req,res) => {
         return res.status(200).send({questions, quizId})
 
     }catch(err){
-        console.log("error in getQuestions", err.message)
         return res.status(500).send({msg:"Internal Server Error"})
 
     }

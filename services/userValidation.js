@@ -15,4 +15,14 @@ const userValidation = (req,res,next) => {
     next()
 }
 
-module.exports = {userValidation}
+const checkRole = (req,res,next) => {
+     const {user, role} = req.body;
+
+  
+    if(!user || (role !== "user" && role !== "admin")){
+      return res.status(400).send({msg:"Please provide correct input"})
+    }
+    next()
+}
+
+module.exports = {userValidation, checkRole}
