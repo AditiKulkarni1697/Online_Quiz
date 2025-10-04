@@ -4,7 +4,8 @@
   "description": "Online quiz : take quiz and get score instantly on different topics",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -25,7 +26,8 @@
     "express-rate-limit": "^8.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.20.0",
-    "mongoose": "^8.18.3"
+    "mongoose": "^8.18.3",
+    "nodemon": "^3.1.10"
   },
   "devDependencies": {
     "jest": "^30.2.0"

@@ -1,10 +1,10 @@
 const { QuestionModel } = require("../models/question.model")
 
 const createQuestion = async(req,res) => {
- const {questionText, multipleOptions, correctOption, quizId, quiz} = req.body
+ const {questionText, Options, correctAnswer, questionType, quizId, quiz} = req.body
 
  try{
- const question = new QuestionModel({questionText, multipleOptions, correctOption, quizId})
+ const question = new QuestionModel({questionText, Options, correctAnswer, questionType, quizId})
 
  await question.save()
 
