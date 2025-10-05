@@ -43,5 +43,53 @@ Assumptions:
 5. Admin can create quiz
 6. Only admin who created quiz can add questions to that quiz
 
-- testcases
-- video recording 
+API endpoints: 
+
+## 1. User
+
+# Register (POST /user/register)
+
+req.body: { email, password }
+Response: Success message or error
+
+# Login (POST /user/login)
+
+req.body: { email, password }
+Response: Auth token or error
+
+# Update role (by admin)
+req.body : {email, role}
+response : Update success or error message
+
+## 2. Quiz
+
+# Create Quiz (POST /quiz) (by admin)
+req.body: { title }
+Response: Created quiz message or error
+
+# Get Quizzes (GET /quiz)
+Response: Array of quizzes
+
+## 3. Question
+
+# Create Question (POST /question) (by admin)
+req.body{
+    "questionText",
+    "Options",
+    "correctAnswer",
+    "questionType",
+    "quizId"
+}
+response: question success message or error
+
+# Get Question( GET /question/:quizId) 
+
+response : {questionArray, quizId}
+
+## 4. Submit
+
+# Submit Quiz(POST /submit)
+req.body = {
+    quizId,
+    ansArr: [{"questionId":"selectedAnswer"}, {"questionId":"selectedAnswer"}]
+}
