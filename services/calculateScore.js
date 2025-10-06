@@ -6,11 +6,13 @@ function calculateScore(arr, correctOptions) {
 }, {});
 
 let correctCount = 0;
-
-for (const { _id, correctOption } of correctOptions) {
+console.log("correctOptions", correctOptions )
+for (const { _id, correctAnswer } of correctOptions) {
   const qid = String(_id); 
-  if (answersMap[qid] === correctOption) {
+  console.log("answersMap[qid] correctOption" , answersMap[qid], correctAnswer )
+  if (answersMap[qid] === correctAnswer[0]) {
     correctCount++;
+
   }
 }
 return correctCount;
