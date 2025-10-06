@@ -4,6 +4,10 @@ Online quiz : take quiz and get score instantly on different topics
 
 This project is a Node.js backend for an online quiz application. It uses Express for routing and middleware, and MongoDB (via Mongoose) for data storage. The application allows users to register, log in, take quizzes, submit answers, and receive instant scores. It supports user roles (user/admin), quiz and question management, and includes validation, authentication, and rate limiting for security. The codebase is organized into controllers, models, services, middleware, and routes for modularity and maintainability.
 
+Deployed Link : https://online-quiz-hk9r.onrender.com
+
+Video Link : <video controls src="video2426211721.mp4" title="Title"></video>
+
 Prerequisites
 Node.js (v14 or higher)
 npm (comes with Node.js)
