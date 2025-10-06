@@ -10,15 +10,16 @@ npm (comes with Node.js)
 MongoDB (local or cloud instance)
 
 
-Steps
-1.Clone the repository
+#Steps
+
+##1.Clone the repository
     git clone <repository-url>
     cd Online_Quiz
 
-2.Install dependencies
+##2.Install dependencies
     npm install
 
-3.Configure environment variables
+##3.Configure environment variables
 
     Create a .env file in the root directory.
     Add the following variables :
@@ -27,10 +28,10 @@ Steps
     JWT_SECRET=
     PORT=
 
-4. Run the Application 
+##4. Run the Application 
     npm run start
 
-5. Run the tests
+##5. Run the tests
     npm test
 
 Assumptions:
@@ -45,34 +46,34 @@ Assumptions:
 
 API endpoints: 
 
-## 1. User
+# 1. User
 
-# Register (POST /user/register)
+## Register (POST /user/register)
 
 req.body: { email, password }
 Response: Success message or error
 
-# Login (POST /user/login)
+## Login (POST /user/login)
 
 req.body: { email, password }
 Response: Auth token or error
 
-# Update role (by admin)
+## Update role (by admin)
 req.body : {email, role}
 response : Update success or error message
 
-## 2. Quiz
+# 2. Quiz
 
-# Create Quiz (POST /quiz) (by admin)
+## Create Quiz (POST /quiz) (by admin)
 req.body: { title }
 Response: Created quiz message or error
 
-# Get Quizzes (GET /quiz)
+## Get Quizzes (GET /quiz)
 Response: Array of quizzes
 
-## 3. Question
+# 3. Question
 
-# Create Question (POST /question) (by admin)
+## Create Question (POST /question) (by admin)
 req.body{
     "questionText",
     "Options",
@@ -82,13 +83,13 @@ req.body{
 }
 response: question success message or error
 
-# Get Question( GET /question/:quizId) 
+## Get Question( GET /question/:quizId) 
 
 response : {questionArray, quizId}
 
-## 4. Submit
+# 4. Submit
 
-# Submit Quiz(POST /submit)
+## Submit Quiz(POST /submit)
 req.body = {
     quizId,
     ansArr: [{"questionId":"selectedAnswer"}, {"questionId":"selectedAnswer"}]
