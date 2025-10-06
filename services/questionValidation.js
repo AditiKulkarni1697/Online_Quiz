@@ -4,7 +4,7 @@ const questionValidation = async(req,res,next) => {
     const {questionText, Options, correctAnswer, questionType, quizId, admin} = req.body
 
     if(!questionText || !correctAnswer || !quizId || !questionType){
-        return res.status(400).send({msg:"questionText, correctOption , questionType and quizId are required"})
+        return res.status(400).send({msg:"questionText, correctAnswer , questionType and quizId are required"})
     }
 
     if(!questionType === "multiple" || !questionType === "single" || questionType === "text-based"){

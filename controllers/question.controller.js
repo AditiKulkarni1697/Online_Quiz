@@ -25,7 +25,7 @@ const getQuestions =  async(req,res) => {
     const {quizId} = req.params;
 
     try{
-        const questions = await QuestionModel.find({quizId: quizId}).select("questionText multipleOptions")
+        const questions = await QuestionModel.find({quizId: quizId}).select("questionText Options")
 
         return res.status(200).send({questions, quizId})
 

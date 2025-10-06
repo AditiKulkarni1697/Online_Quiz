@@ -5,7 +5,7 @@ const submitQuiz = async(req,res) => {
     const {quizId, ansArr} = req.body;
 
     try{
-    const correctOptions = await QuestionModel.find({quizId}).select("correctOption")
+    const correctOptions = await QuestionModel.find({quizId}).select("correctAnswer")
 
     if (!correctOptions || correctOptions.length === 0) {
   return res.status(400).send({ msg: "No questions found for this quiz" });
