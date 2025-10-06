@@ -6,7 +6,7 @@ This project is a Node.js backend for an online quiz application. It uses Expres
 
 Deployed Link : https://online-quiz-hk9r.onrender.com
 
-Video Link : <video controls src="video2426211721.mp4" title="Title"></video>
+Video Link : https://drive.google.com/file/d/1tCkqlmkwJGpK2jJTyaTFDLZ4FLal45DG/view?usp=sharing
 
 Prerequisites
 Node.js (v14 or higher)
