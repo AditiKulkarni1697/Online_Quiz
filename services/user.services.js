@@ -5,7 +5,7 @@ try{
     const isPresent = await UserModel.findOne({ email });
     return isPresent;
 }catch(err){
-    console.log("error in getuser", err.message)
+    console.log("error in getuser ", err.message)
     return ;
 }
 }
